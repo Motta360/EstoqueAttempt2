@@ -1,0 +1,84 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(255,255,255);
+    background: linear-gradient(135deg, rgba(255,255,255,1) 34%, rgba(255,0,0,1) 93%);
+}
+
+.Titulo {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(0, 0, 0);
+    background-color: rgb(69, 134, 255);
+    margin: 0;
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    align-items: center;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 5px;
+    background-color: lightgray;
+    cursor: grab;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.navbar ul li:hover {
+    background-color: black;
+    color: white;
+}
+
+#itens ul {
+    display: flex;
+    flex-direction: column;
+}
+
+#itens ul li {
+    padding: 10px;
+}
+
+.itens-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    background-color:  rgb(69, 134, 255);
+    margin: 0;
+    padding: 20px;
+    width: 75%;
+    box-sizing: border-box;
+}
+
+article{
+    display: flex;
+    justify-content: center;
+}
+aside{
+    margin: 0;
+    border: 1px solid black;
+    width: 25%;
+    padding-left: 10px;
+    background-color: lightgray;
+    border-radius: 20px;
+     
+}

@@ -1,0 +1,27 @@
+ul{
+    list-style: none;
+    align-items: center;
+    display: flex;
+
+}
+
+.navbar ul li{
+
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin: 5px;
+    background-color: lightgray;
+}
+
+.navbar ul li:hover{
+    background-color: black;
+    color: white;
+    
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
