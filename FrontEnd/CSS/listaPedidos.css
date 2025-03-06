@@ -36,3 +36,10 @@ body {
     background: rgb(112, 112, 112);
     background: linear-gradient(135deg, rgb(102, 102, 102) 34%, rgb(0, 26, 255) 93%);
 }
+
+td{
+    background-color: lightgray;
+}
+.table{
+    background-color: lightgray;
+}

@@ -46,3 +46,14 @@ body {
     margin: 0;
     padding: 10px;
 }
+
+td{
+    background-color: lightgray;
+}
+section{
+    background-color: lightgray;
+}
+
+.deletar{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
