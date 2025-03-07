@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar</title>
-    <link rel="stylesheet" href="CSS/estoque.css">
+    <link rel="stylesheet" href="./CSS/estoque.css">
 </head>
 <body>
     <div class="Titulo">
@@ -13,10 +13,10 @@
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="/index.html">Fazer Pedido</a></li>
-                <li><a href="/listaPedidos.html">Lista de Pedidos</a></li>
-                <li><a href="/Estoque.html">Estoque</a></li>
-                <li><a href="RegistrarMoveis.html">Registrar Móveis</a></li>
+                <li><a href="../index.html">Fazer Pedido</a></li>
+                <li><a href="./listaPedidos.html">Lista de Pedidos</a></li>
+                <li><a href="./Estoque.html">Estoque</a></li>
+                <li><a href="./RegistrarMoveis.html">Registrar Móveis</a></li>
     
             </ul>
         </nav>
@@ -36,63 +36,5 @@
         </section>
     
 </body>
-<script>
-    // Função para preencher a tabela com os dados da API
-    function preencherTabela(dados) {
-            const tbody = document.getElementById("tabela");
-
-            dados.forEach(item => {
-                const tr = document.createElement('tr');
-
-                const tdNome = document.createElement('td');
-                tdNome.textContent = item.name;
-
-                const tdQuantidade = document.createElement('td');
-                tdQuantidade.textContent = item.quantidade;
-
-                const tdAcao = document.createElement('td');
-                const botaoDeletar = document.createElement('button');
-                botaoDeletar.textContent = 'X';
-                botaoDeletar.classList.add('btn', 'btn-danger');
-                botaoDeletar.onclick = () => deleted(item.name);
-                tdAcao.appendChild(botaoDeletar);
-
-                tr.appendChild(tdNome);
-                tr.appendChild(tdQuantidade);
-                tr.appendChild(tdAcao);
-
-                tbody.appendChild(tr);
-            });
-        }
-    function deleted(movel) {
-        fetch('http://localhost:8080/1/delete/' + movel)
-        .then(response => {
-            if(response.ok){
-                throw new Error('Erro na requisição' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data)
-        })
-        .catch(error => {
-            console.error('Erro:',error)
-        })
-        
-    }
-
-    fetch('http://localhost:8080/1/moveis', {method: 'DELETE'})
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erro na requisição: ' + response.status);
-            }
-            return response.json(); 
-        })
-        .then(data => {
-            preencherTabela(data);
-        })
-        .catch(error => {
-            console.error('Erro:', error);
-        });
-</script>
+<script src="./JS/estoque.js"></script>
 </html>

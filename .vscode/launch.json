@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-EstoqueApiApplication<estoqueAPI>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.estoqueAPI.estoqueAPI.EstoqueApiApplication",
+            "projectName": "estoqueAPI",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -76,6 +78,16 @@ public class EstoqueController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Móvel específico não encontrado");
 
         }
+
+
+    @PostMapping("/{id}/moveis/add")
+    public ResponseEntity<Movel> criarMovel(@RequestBody Movel movel, @PathVariable Long id) {
+        Movel novoMovel = movelRepository.save(movel); 
+        Estoque e1 = estoqueRepository.findById(id).get();
+        e1.getMoveis().add(novoMovel);
+        estoqueRepository.save(e1);
+        return ResponseEntity.ok(novoMovel); 
+    }
         
     
     

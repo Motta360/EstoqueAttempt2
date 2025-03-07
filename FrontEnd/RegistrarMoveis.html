@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar</title>
-    <link rel="stylesheet" href="CSS/RegistrarMoveis.css">
+    <link rel="stylesheet" href="./CSS/RegistrarMoveis.css">
 </head>
 <body>
     <h1 class="Titulo">Registrar Novo</h1>
     <nav class="navbar">
         <ul>
-            <li><a href="/index.html">Fazer Pedido</a></li>
-            <li><a href="/listaPedidos.html">Lista de Pedidos</a></li>
-            <li><a href="/Estoque.html">Estoque</a></li>
-            <li><a href="RegistrarMoveis.html">Registrar Móveis</a></li>
+            <li><a href="./index.html">Fazer Pedido</a></li>
+            <li><a href="./listaPedidos.html">Lista de Pedidos</a></li>
+            <li><a href="./Estoque.html">Estoque</a></li>
+            <li><a href="./RegistrarMoveis.html">Registrar Móveis</a></li>
+
         </ul>
     </nav>
 
     <div class="form-container">
-        <form action="#" method="post">
+        <form id="registrarForm" onsubmit="event.preventDefault(); Post();">
             <h1>Registrar Novo Produto</h1>
             <label for="Nome">Nome</label><br>
             <input type="text" name="Nome" id="Nome"><br><br>
@@ -29,5 +30,10 @@
 
     </div>
     
+
+
 </body>
+
+
+<script src="./JS/registrarMoveis.js"></script>
 </html>
