@@ -1,97 +1,121 @@
+/* Estilo geral */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background: rgb(112, 112, 112);
-    background: linear-gradient(135deg, rgb(102, 102, 102) 34%, rgb(0, 26, 255) 93%);
+    background: linear-gradient(135deg, #666666 34%, #001aff 93%);
+    color: #333;
 }
 
+/* Título */
 .Titulo {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
-    background-color: rgb(69, 134, 255);
+    background-color: #0d6efd; /* Azul do Bootstrap */
     margin: 0;
-    padding: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-ul {
+/* Navbar */
+.navbar ul {
     list-style: none;
-    align-items: center;
     display: flex;
+    justify-content: center;
+    padding: 10px;
     margin: 0;
-    padding: 0;
+    background-color: #0d6efd; /* Azul do Bootstrap */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navbar ul li {
-    padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 10px;
-    margin: 5px;
-    background-color: lightgray;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #f8f9fa; /* Cinza claro */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li:hover {
-    background-color: black;
+    background-color: #0b5ed7; /* Azul mais escuro */
     color: white;
 }
 
-#itens ul {
-    display: flex;
-    flex-direction: column;
+.navbar ul li a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: bold;
 }
 
-#itens ul li {
-    padding: 10px;
+/* Container principal */
+article {
     display: flex;
-    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+aside {
+    width: 25%;
+    padding: 20px;
+    background-color: #f8f9fa; /* Cinza claro */
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+
+aside h2 {
+    margin-top: 0;
+    color: #0d6efd; /* Azul do Bootstrap */
+}
+
+.itens-container {
+    width: 75%;
+    padding: 20px;
     background-color: white;
-    margin-bottom: 10px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.itens-container {
+/* Lista de itens */
+#itens {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#itens ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#itens ul li {
+    display: flex;
     align-items: center;
-    background-color: rgb(208, 208, 212);
-    margin-left: 30px;
-    padding: 20px;
-    width: 75%;
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-size: 25px;
+    padding: 10px;
+    background-color: #f8f9fa; /* Cinza claro */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
 
-article {
-    display: flex;
-    justify-content: center;
-}
-
-aside {
-    border: 1px solid black;
-    width: 25%;
-    padding-left: 20px;
-    background-color: lightgray;
-    margin-left: 20px;
+#itens ul li:hover {
+    background-color: #e9ecef; /* Cinza mais claro */
 }
 
 .item {
     font-family: Arial, Helvetica, sans-serif;
+    flex-grow: 1;
 }
 
 .checkbox {
-    margin: 10px;
+    margin-right: 10px;
 }
 
 .input-text {
@@ -106,4 +130,31 @@ aside {
 
 .checkbox:checked ~ .input-text {
     display: inline-block;
+}
+
+/* Campo de Agência */
+#Agencia {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+/* Botão Pedir */
+#btnPedir {
+    padding: 10px 20px;
+    background-color: #0d6efd; /* Azul do Bootstrap */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btnPedir:hover {
+    background-color: #0b5ed7; /* Azul mais escuro */
 }

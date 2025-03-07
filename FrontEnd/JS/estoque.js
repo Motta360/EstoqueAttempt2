@@ -14,8 +14,8 @@
 
             const tdAcao = document.createElement('td');
             const botaoDeletar = document.createElement('button');
-            botaoDeletar.textContent = 'X';
-            botaoDeletar.classList.add('btn', 'btn-danger');
+            botaoDeletar.textContent = 'Deletar';
+            botaoDeletar.classList.add('deletar');
             botaoDeletar.onclick = () => deleted(item.name);
             tdAcao.appendChild(botaoDeletar);
 

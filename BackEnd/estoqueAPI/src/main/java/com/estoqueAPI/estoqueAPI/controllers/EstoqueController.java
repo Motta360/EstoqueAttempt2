@@ -1,6 +1,9 @@
 package com.estoqueAPI.estoqueAPI.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,14 +19,18 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.estoqueAPI.estoqueAPI.models.Estoque;
 import com.estoqueAPI.estoqueAPI.models.Movel;
+import com.estoqueAPI.estoqueAPI.models.Pedido;
 import com.estoqueAPI.estoqueAPI.repositories.EstoqueRepository;
 import com.estoqueAPI.estoqueAPI.repositories.MovelRepository;
+import com.estoqueAPI.estoqueAPI.repositories.PedidoRepository;
 import com.estoqueAPI.estoqueAPI.services.EstoqueService;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class EstoqueController {
 
     @Autowired
@@ -34,6 +41,9 @@ public class EstoqueController {
 
     @Autowired
     private MovelRepository movelRepository;
+
+    @Autowired
+    private PedidoRepository pedidoRepository;
 
     @GetMapping("/{id}/moveis")
     public ResponseEntity<List<Movel>> getMoveis(@PathVariable Long id) {
@@ -88,7 +98,73 @@ public class EstoqueController {
         estoqueRepository.save(e1);
         return ResponseEntity.ok(novoMovel); 
     }
-        
+
+    @PostMapping("/pedidos")
+    public ResponseEntity<Pedido> criarPedido(@RequestBody Pedido pedido) {
+        Pedido novoPedido = pedidoRepository.save(pedido);
+        return ResponseEntity.ok(novoPedido);
+    }
+
+    @GetMapping("/pedidos")
+    public ResponseEntity<List<Pedido>> getPedidos() {
+        return ResponseEntity.ok( pedidoRepository.findAll());
+    }
     
+        
+    @GetMapping("/pedidos/{id}")
+    public ResponseEntity<Pedido> getPedidoPorId(@PathVariable Long id) {
+    return pedidoRepository.findById(id)
+            .map(ResponseEntity::ok)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não encontrado"));
+}
+@PostMapping("/pedidos/{id}/executar")
+public ResponseEntity<Map<String, String>> executarPedido(@PathVariable Long id, @RequestBody List<Movel> itens) {
+    try {
+        // Verifica se o pedido existe
+        Pedido pedido = pedidoRepository.findById(id)
+            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Pedido não encontrado"));
+
+        // Atualiza as quantidades dos móveis
+        for (Movel item : itens) {
+            Optional<Movel> optionalMovel = movelRepository.findByName(item.getName());
+            if (optionalMovel.isPresent()) {
+                Movel movel = optionalMovel.get();
+                System.out.println("Movel encontrado: " + movel); // Log para depuração
+
+                // Verifica se há estoque suficiente
+                if (movel.getQuantidade() >= item.getQuantidade()) {
+                    movel.setQuantidade(movel.getQuantidade() - item.getQuantidade());
+                    movelRepository.save(movel);
+                } else {
+                    // Retorna um objeto JSON com a mensagem de erro
+                    Map<String, String> errorResponse = new HashMap<>();
+                    errorResponse.put("error", "Estoque insuficiente para o item: " + item.getName());
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+                }
+            } else {
+                // Retorna um objeto JSON com a mensagem de erro
+                Map<String, String> errorResponse = new HashMap<>();
+                errorResponse.put("error", "Item não encontrado: " + item.getName());
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+            }
+        }
+
+        // Marca o pedido como executado
+        pedido.setExecutado(true);
+        pedidoRepository.save(pedido);
+
+        // Retorna um objeto JSON com a mensagem de sucesso
+        Map<String, String> successResponse = new HashMap<>();
+        successResponse.put("message", "Pedido executado com sucesso!");
+        return ResponseEntity.ok(successResponse);
+    } catch (Exception e) {
+        e.printStackTrace(); // Log da exceção
+
+        // Retorna um objeto JSON com a mensagem de erro
+        Map<String, String> errorResponse = new HashMap<>();
+        errorResponse.put("error", "Erro ao executar pedido: " + e.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+    }
+}
     
 }
