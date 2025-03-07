@@ -52,14 +52,19 @@ a {
 
 #itens ul li {
     padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .itens-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    background-color:  rgb(208, 208, 212);
+    background-color: rgb(208, 208, 212);
     margin-left: 30px;
     padding: 20px;
     width: 75%;
@@ -68,15 +73,37 @@ a {
     font-size: 25px;
 }
 
-article{
+article {
     display: flex;
     justify-content: center;
 }
-aside{
+
+aside {
     border: 1px solid black;
     width: 25%;
     padding-left: 20px;
     background-color: lightgray;
     margin-left: 20px;
-     
+}
+
+.item {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.checkbox {
+    margin: 10px;
+}
+
+.input-text {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100px;
+    margin-left: 10px;
+    display: none;
+}
+
+.checkbox:checked ~ .input-text {
+    display: inline-block;
 }
