@@ -1,5 +1,7 @@
 package com.estoqueAPI.estoqueAPI.controllers;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,6 @@ import com.estoqueAPI.estoqueAPI.repositories.EstoqueRepository;
 import com.estoqueAPI.estoqueAPI.repositories.MovelRepository;
 import com.estoqueAPI.estoqueAPI.repositories.PedidoRepository;
 import com.estoqueAPI.estoqueAPI.services.EstoqueService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -107,7 +108,10 @@ public class EstoqueController {
 
     @GetMapping("/pedidos")
     public ResponseEntity<List<Pedido>> getPedidos() {
-        return ResponseEntity.ok( pedidoRepository.findAll());
+
+        List<Pedido> enviar = pedidoRepository.findAll();
+        Collections.reverse(enviar);
+        return ResponseEntity.ok(enviar);
     }
     
         
