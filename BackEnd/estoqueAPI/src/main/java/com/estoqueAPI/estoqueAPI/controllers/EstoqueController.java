@@ -136,14 +136,19 @@ public ResponseEntity<Map<String, String>> executarPedido(@PathVariable Long id,
                 System.out.println("Movel encontrado: " + movel); // Log para depuração
 
                 // Verifica se há estoque suficiente
-                if (movel.getQuantidade() >= item.getQuantidade()) {
-                    movel.setQuantidade(movel.getQuantidade() - item.getQuantidade());
+                if(pedido.getEntrada().equalsIgnoreCase("Saida")){
+                    if (movel.getQuantidade() >= item.getQuantidade()) {
+                        movel.setQuantidade(movel.getQuantidade() - item.getQuantidade());
+                        movelRepository.save(movel);
+                    } else {
+                        // Retorna um objeto JSON com a mensagem de erro
+                        Map<String, String> errorResponse = new HashMap<>();
+                        errorResponse.put("error", "Estoque insuficiente para o item: " + item.getName());
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+                    }
+                }else{
+                    movel.setQuantidade(movel.getQuantidade() + item.getQuantidade());
                     movelRepository.save(movel);
-                } else {
-                    // Retorna um objeto JSON com a mensagem de erro
-                    Map<String, String> errorResponse = new HashMap<>();
-                    errorResponse.put("error", "Estoque insuficiente para o item: " + item.getName());
-                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
                 }
             } else {
                 // Retorna um objeto JSON com a mensagem de erro

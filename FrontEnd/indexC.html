@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="./indexC.html">Fazer Pedido</a></li>
                 <li><a href="./EstoqueC.html">Estoque</a></li>
-                <li><a href="">DashBoard</a></li>
+                <li><a href="https://app.powerbi.com/view?r=eyJrIjoiZDcyNzQ1NWYtMzFjMi00MjMxLTlkZDEtZDQwYTQ5NWRhYjYzIiwidCI6ImIyZDMwOWMxLThhMDEtNGFlZi1hYjM4LWE2ZmRmMWNlMmFmYSJ9">DashBoard</a></li>
                 
             </ul>
         </nav>
@@ -55,7 +55,16 @@
             </aside>
             <div class="itens-container">
                 <section id="itens">
-                    <input type="text" name="Agencia" id="Agencia" placeholder="Agencia">
+                    <input type="text" name="Agencia" id="Agencia" placeholder="Unidade (uniorg + nome agência)">
+                    <input type="text" name="GestorSTD" id="GestorSTD" placeholder="Gestor Santander">
+                    <input type="text" name="GestorR" id="GestorR" placeholder="Gerenciadora Responsavel">
+                    <input type="text" name="Fornecedor" id="Fornecedor" placeholder="Fornecedor que acessará o estoque">
+                    <input type="date" name="DataPrevista" id="DataPrevista" placeholder="Data Prevista de Acesso ao Estoque">
+                    <input type="email" name="email" id="email" placeholder="Insira seu e-mail para contato">
+                    <select name="I/O" id="I/O">
+                        <option value="Saida">SAIDA</option>
+                        <option value="Entrada">ENTRADA</option>
+                    </select>
                     <ul id="lista-itens"></ul>
                     <button type="button" id="btnPedir">Pedir</button>
                 </section>

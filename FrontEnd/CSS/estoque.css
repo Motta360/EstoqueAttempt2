@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-    background: linear-gradient(135deg, #666666 34%, #001aff 93%);
+    background: #ffed9c;
     color: #333;
 }
 
@@ -17,7 +17,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
-    background-color: #0d6efd; /* Azul do Bootstrap */
+    background-color: #ffc107; /* Amarelo vibrante */
     margin: 0;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@ body {
 
 /* Navbar */
 .navbar {
-    background-color: #0d6efd; /* Azul do Bootstrap */
+    background-color: #ffc107; /* Amarelo vibrante */
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -41,13 +41,13 @@ body {
 .navbar ul li {
     padding: 10px 20px;
     margin: 0 10px;
-    background-color: #f8f9fa; /* Cinza claro */
+    background-color: #fff3cd; /* Amarelo claro */
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar ul li:hover {
-    background-color: #0b5ed7; /* Azul mais escuro */
+    background-color: #e0a800; /* Amarelo mais escuro */
     color: white;
 }
 
@@ -78,7 +78,7 @@ section {
 }
 
 .table thead {
-    background-color: #0d6efd; /* Azul do Bootstrap */
+    background-color: #ffc107; /* Amarelo vibrante */
     color: white;
 }
 
@@ -92,13 +92,13 @@ section {
 }
 
 .table tbody tr:hover {
-    background-color: #f1f1f1; /* Cinza claro */
+    background-color: #fff3cd; /* Amarelo claro */
 }
 
 /* Botão Deletar */
 .deletar {
     background-color: #dc3545; /* Vermelho do Bootstrap */
-    color: rgb(0, 0, 0); /* Texto branco */
+    color: white; /* Texto branco */
     border: none;
     padding: 8px 16px;
     border-radius: 5px;

@@ -17,6 +17,12 @@ public class Pedido {
     private String agencia;
     private LocalDate data;
     private Boolean executado;
+    private String GestorSTD;
+    private String GestorResponsavel;
+    private String Fornecedor;
+    private String DataPrevista;
+    private String email;
+    private String Entrada;
 
     public Pedido() {
         data = LocalDate.now();
@@ -65,7 +71,53 @@ public class Pedido {
         this.executado = executado;
     }
 
+    public String getGestorSTD() {
+        return GestorSTD;
+    }
 
+    public void setGestorSTD(String gestorSTD) {
+        GestorSTD = gestorSTD;
+    }
+
+    public String getGestorResponsavel() {
+        return GestorResponsavel;
+    }
+
+    public void setGestorResponsavel(String gestorResponsavel) {
+        GestorResponsavel = gestorResponsavel;
+    }
+
+    public String getFornecedor() {
+        return Fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        Fornecedor = fornecedor;
+    }
+
+    public String getDataPrevista() {
+        return DataPrevista;
+    }
+
+    public void setDataPrevista(String dataPrevista) {
+        DataPrevista = dataPrevista;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEntrada() {
+        return Entrada;
+    }
+
+    public void setEntrada(String entrada) {
+        Entrada = entrada;
+    }
     
     @Override
     public int hashCode() {
@@ -104,7 +156,5 @@ public class Pedido {
         return true;
     }
 
-
-    
-    
+   
 }

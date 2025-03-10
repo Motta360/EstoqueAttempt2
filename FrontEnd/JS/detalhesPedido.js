@@ -28,6 +28,24 @@ function carregarDetalhesPedido() {
             const agencia = document.createElement('p');
             agencia.textContent = `Agência: ${pedido.agencia}`;
 
+            const gestorSTD = document.createElement('p');
+            gestorSTD.textContent = `Gestor STD: ${pedido.gestorSTD}`; // Correto (camelCase)
+
+            const gestorResponsavel = document.createElement('p');
+            gestorResponsavel.textContent = `Gestor Responsável: ${pedido.gestorResponsavel}`; // Correto (camelCase)
+
+            const fornecedor = document.createElement('p');
+            fornecedor.textContent = `Fornecedor: ${pedido.fornecedor}`; // Correto (camelCase)
+
+            const dataPrevista = document.createElement('p');
+            dataPrevista.textContent = `Data Prevista: ${pedido.dataPrevista}`; // Correto (camelCase)
+
+            const email = document.createElement('p');
+            email.textContent = `Email: ${pedido.email || 'Não informado'}`; // Exibe "Não informado" se o campo estiver ausente
+
+            const entrada = document.createElement('p');
+            entrada.textContent = `Movimento: ${pedido.entrada}`; // Correto (camelCase)
+
             // Parseia a string JSON dos itens
             const itens = JSON.parse(pedido.pedido);
 
@@ -42,6 +60,12 @@ function carregarDetalhesPedido() {
             // Adiciona os detalhes à página
             detalhesDiv.appendChild(data);
             detalhesDiv.appendChild(agencia);
+            detalhesDiv.appendChild(gestorSTD);
+            detalhesDiv.appendChild(gestorResponsavel);
+            detalhesDiv.appendChild(fornecedor);
+            detalhesDiv.appendChild(dataPrevista);
+            detalhesDiv.appendChild(email);
+            detalhesDiv.appendChild(entrada);
             detalhesDiv.appendChild(listaItens);
 
             // Verifica se o pedido já foi executado

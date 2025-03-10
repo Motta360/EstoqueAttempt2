@@ -101,6 +101,12 @@ function enviarPedido() {
     const itensSelecionados = [];
     const checkboxes = document.querySelectorAll('.checkbox:checked'); // Seleciona todos os checkboxes marcados
     const agencia1 = document.getElementById("Agencia").value;
+    const GestorSTD = document.getElementById("GestorSTD").value;
+    const GestorR = document.getElementById("GestorR").value;
+    const Fornecedor = document.getElementById("Fornecedor").value;
+    const DataPrevista = document.getElementById("DataPrevista").value;
+    const email = document.getElementById("email").value;
+    const Entrada = document.getElementById("I/O").value;
     checkboxes.forEach(checkbox => {
         const li = checkbox.parentElement; // Obtém o <li> que contém o checkbox e o input
         const nomeItem = li.textContent.trim().split("Quantidade")[0]; // Obtém o nome do item
@@ -118,9 +124,16 @@ function enviarPedido() {
         // Cria o objeto de pedido
         const pedido = {
             agencia: agencia1,
-            pedido: JSON.stringify(itensSelecionados), // Converte a lista de itens para uma string JSON
-            data: new Date().toISOString() // Adiciona a data atual
+            pedido: JSON.stringify(itensSelecionados),
+            data: new Date().toISOString(),
+            gestorSTD: GestorSTD, // Note o camelCase
+            gestorResponsavel: GestorR, // Note o camelCase
+            fornecedor: Fornecedor, // Note o camelCase
+            dataPrevista: DataPrevista, // Note o camelCase
+            email: email,
+            entrada: Entrada // Note o camelCase
         };
+        console.log('Dados do pedido:', pedido);
 
         // Envia o pedido para a API
         fetch('http://localhost:8080/pedidos', {
