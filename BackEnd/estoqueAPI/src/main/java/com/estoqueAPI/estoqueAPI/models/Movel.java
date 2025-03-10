@@ -12,21 +12,11 @@ public class Movel {
     private Long id;
     private String name;
     private int quantidade;
+    private String categoria;
 
     
     public Movel() {
     }
-
-    
-
-    public Movel(Long id, String name, Integer quantidade) {
-        this.id = id;
-        this.name = name;
-        this.quantidade = quantidade;
-    }
-
-    
-
 
 
     public Long getId() {
@@ -61,6 +51,16 @@ public class Movel {
         this.quantidade = quantidade;
     }
 
+    
+    public String getCategoria() {
+        return categoria;
+    }
+
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+    
 
 
     @Override
@@ -89,6 +89,8 @@ public class Movel {
             return false;
         return true;
     }
+
+
 
 
 

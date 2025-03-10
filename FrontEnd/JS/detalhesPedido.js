@@ -44,10 +44,25 @@ function carregarDetalhesPedido() {
             detalhesDiv.appendChild(agencia);
             detalhesDiv.appendChild(listaItens);
 
-            // Adiciona o evento de clique ao botão "Executar Pedido"
-            document.getElementById('executarPedido').addEventListener('click', () => {
-                executarPedido(pedidoId, itens);
-            });
+            // Verifica se o pedido já foi executado
+            if (pedido.executado) {
+                // Desabilita o botão "Executar Pedido"
+                const botaoExecutar = document.getElementById('executarPedido');
+                botaoExecutar.disabled = true;
+                botaoExecutar.textContent = 'Pedido Executado';
+
+                // Exibe uma mensagem informando que o pedido já foi executado
+                const mensagem = document.createElement('p');
+                mensagem.textContent = 'Este pedido já foi executado.';
+                mensagem.style.color = 'green'; // Cor verde para indicar sucesso
+                mensagem.style.fontWeight = 'bold';
+                detalhesDiv.appendChild(mensagem);
+            } else {
+                // Adiciona o evento de clique ao botão "Executar Pedido"
+                document.getElementById('executarPedido').addEventListener('click', () => {
+                    executarPedido(pedidoId, itens);
+                });
+            }
         })
         .catch(error => {
             console.error('Erro:', error);
@@ -78,6 +93,8 @@ function executarPedido(pedidoId, itens) {
     .then(data => {
         alert(data.message); // Exibe a mensagem de sucesso
         console.log('Resposta da API:', data);
+        // Recarrega a página para atualizar o status do pedido
+        window.location.reload();
     })
     .catch(error => {
         console.error('Erro:', error);

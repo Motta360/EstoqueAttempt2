@@ -1,10 +1,12 @@
 function Post() {
     const nome = document.getElementById('Nome').value;
     const quantidade = document.getElementById('Quantidade').value;
+    const categoria = document.getElementById('Categoria').value;
 
     const movel = {
         name: nome,
-        quantidade: parseInt(quantidade)
+        quantidade: parseInt(quantidade),
+        categoria: categoria
     };
 
     fetch('http://localhost:8080/1/moveis/add', {
